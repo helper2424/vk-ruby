@@ -38,7 +38,7 @@ class VK::Params < Struct.new(:config, :options)
   alias stack middlewares
 
   def query
-    %i[host verb timeout open_timeout ssl proxy middlewares stack].inject(options.dup) do |result, name|
+    [:host, :verb, :timeout, :open_timeout, :ssl, :proxy, :middlewares, :stack].inject(options.dup) do |result, name|
       result.delete(name)
       result
     end
